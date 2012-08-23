@@ -2,11 +2,11 @@
 
 
 //参数是测试方法的数组
-function thunder(){
+var thunder=function (){
 	/**
 	* run a array of test method
 	*/
-	this.runTests=function(testMethods){
+	this.runtests=function(testMethods){
 		var tests=Object.keys(testMethods);
 		console.log("startting test ...");
 		console.log("total "+tests.length+" methods to run.");
@@ -16,7 +16,7 @@ function thunder(){
 		function testCaller(){
 			if(i<tests.length) {
 				console.log('-----------------------------------------------');//换行
-				console.log('calling test '+i+ ' '+ ': '+tests[i]);//(tests[i].toString()).match(/function\s*([^(]*)\(/)[1]+' ...');
+				console.log('Function '+i+ ' '+ ': '+tests[i]);//(tests[i].toString()).match(/function\s*([^(]*)\(/)[1]+' ...');
 				testMethods[tests[i++]](testCaller);
 			}else{
 				console.log('-----------------------------------------------');
@@ -42,13 +42,15 @@ function thunder(){
 			}
 		}
 		tests['clean']=this.clean;
-		this.runtest(tests);
+		this.runtests(tests);
 	}
 }
 thunder.prototype.setup=function(callback){
+	console.log('setup() is undefined in this test!');
 	callback();
 };
 thunder.prototype.clean=function(){
+	console.log('clean is undefined in this test!');
 };
 
 
